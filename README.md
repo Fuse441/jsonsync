@@ -1,65 +1,58 @@
-# jsonsync README
+# JsonSync Extension for VS Code
 
-This is the README for your extension "jsonsync". After writing up a brief description, we recommend including the following sections.
+JsonSync is a VS Code extension that helps you compare JSON files with data stored in MongoDB collections. The extension reads configuration files from your workspace and compares them against MongoDB collections to check for any differences.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- Compare JSON configuration files against MongoDB collections.
+- Output the results in the VS Code output panel with color-coded results:
+  - 🟩 No differences found.
+  - 🟥 Differences found.
+- Supports working with different collections specified in `.env`.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- MongoDB instance running and accessible.
+- `.env` file in the root directory with the following variables:
+  - `DATABASE_URL`: MongoDB connection URL.
+  - `DATABASE_NAME`: The name of the MongoDB database.
+  - `COMMON`: The directory for common JSON files to compare.
 
-## Extension Settings
+## Installation
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+1. Open your VS Code.
+2. Go to Extensions View (`Ctrl+Shift+X`).
+3. Search for `JsonSync` and click **Install**.
 
-For example:
+## Usage
 
-This extension contributes the following settings:
+1. Make sure you have a MongoDB instance running and properly configured.
+2. Ensure that your project has a `.env` file with the required variables:
+   - `DATABASE_URL`: Your MongoDB URL.
+   - `DATABASE_NAME`: The name of your MongoDB database.
+   - `COMMON`: Path to the common JSON files folder.
+3. Use the `Compare JSON` command from the Command Palette (`Ctrl+Shift+P`) or bind it to a custom shortcut.
+4. View the results in the Output panel of VS Code. You will see whether the JSON files match with the MongoDB collections or not.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## Configuration
 
-## Known Issues
+### `.env` file example:
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
 
-## Release Notes
+### Collections
 
-Users appreciate release notes as you update your extension.
+The extension works with two types of collections:
 
-### 1.0.0
+1. **Array Collections**: Specified in the `arrCollection` array in the code.
+2. **Common Collections**: Specified in the `commonCollection` array in the code.
 
-Initial release of ...
+You can modify the list of collections to fit your project needs.
 
-### 1.0.1
+## Development
 
-Fixed issue #.
+1. Clone the repository.
+2. Install the dependencies:
+   ```bash
+   npm install
 
-### 1.1.0
 
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**

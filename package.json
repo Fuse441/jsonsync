@@ -1,6 +1,7 @@
 {
   "name": "jsonsync",
   "displayName": "JsonSync",
+  "publisher" : "jiranon",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -16,6 +17,13 @@
       {
         "command": "jsonsync.compareJSON",
         "title": "compareJSON"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "jsonsync.compareJSON",
+        "key": "ctrl+alt+c",
+        "when": "editorTextFocus"
       }
     ]
   },
