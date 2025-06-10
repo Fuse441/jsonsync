@@ -24,7 +24,7 @@ function activate(context) {
   const disposable = vscode.commands.registerCommand(
     "jsonsync.compareJSON",
     async function () {
-		const startTime = Date.now(); 
+      const startTime = Date.now();
       outputChannel.show();
       outputChannel.clear();
       let envObject = {};
@@ -71,7 +71,9 @@ function activate(context) {
           ) {
             let stateDiff = { status: true, result: "" };
             const collection = await db.collection(collectionName);
-            const dirJSON = await fs.readdir(folderPath, "utf-8");
+            const dirJSON = (await fs.readdir(folderPath, "utf-8")).filter(
+              (file) => file.endsWith(".json")
+            );
 
             if (dirJSON.length > 0) {
               for (const config of dirJSON) {
@@ -124,10 +126,11 @@ function activate(context) {
           }
 
           await client.close();
-		  const endTime = Date.now(); 
+          const endTime = Date.now();
           const totalTime = ((endTime - startTime) / 1000).toFixed(2);
-          outputChannel.appendLine(`--------- Time ${totalTime} seconds ---------`);
-
+          outputChannel.appendLine(
+            `--------- Time ${totalTime} seconds ---------`
+          );
         } catch (error) {
           vscode.window.showErrorMessage(`Error: ${error.message}`);
         }
